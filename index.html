@@ -4,35 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Car Safety System</title>
+        <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Smart Car Safety System</h1>
-    <!--Weather section -->
-    <div id="weather-box" class="weather-box"></div>
-    <!--Run diagnostic-->
-    <di#v class="diagnostic">
-        <button id="runDiagnostic">Full Run Car Diagnostic</button>
-    </div>
-    <!--other features-->
-    <div class="feature-section">
-        <h2>Vehicle Monitors</h2>
-        <ul>
-            <li>Tire Pressure: <span id="tirePressure">Normal</span></li>
-            <li>Battery Level:<span id="batteryLevel">Good</span></li>
-            <li>Location:<span id="location">Fetching...</span></li>
+    <div class="container">
+                <h1>Smart Car Safety System</h1>
+            <!--Weather section -->
+            <div id="weather-box" class="weather-box"><h1>h</h1></div>
+            <!--Run diagnostic-->
+            <div class="diagnostic">
+                <button id="runDiagnostic">Full Run Car Diagnostic</button>
+            </div>
 
-        </ul>
-        
+
+            <!--other features-->
+            <div class="feature-section">
+                <h2>Vehicle Monitors</h2>
+                <ul>
+                    <li>Tire Pressure: <span id="tirePressure">Normal</span></li>
+                    <li>Battery Level:<span id="batteryLevel">Good</span></li>
+                    <li>Location:<span id="location">Fetching...</span></li>
+
+                </ul>
+                
+            </div>
+            <!--alerts-->
+            <div id="alerts" class="alerts"></div>
+            <!--logs-->
+            <div class="log-section">
+                <h2>Incident Log</h2>
+                <ul id="logList"></ul>
+            </div>
+            <!--audio warnings-->
+            <audio src="assets/beep.mp3" id="beepAudio" preload="auto"></audio>
+
     </div>
-    <!--alerts-->
-    <div id="alerts" class="alerts"></div>
-    <!--logs-->
-    <div class="log-section">
-        <h2>Incident Log</h2>
-        <ul id="logList"></ul>
-    </div>
-    <!--audio warnings-->
-    <audio src="assets/beep.mp3" id="beepAudio" preload="auto"></audio>
+
     <script src="script.js"></script>
 </body>
 </html>
