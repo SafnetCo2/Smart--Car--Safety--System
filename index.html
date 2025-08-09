@@ -1,84 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart Car Safety System</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>🚗 Smart Car Safety System</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Car Safety System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚗 Smart Car Safety System</h1>
 
-    <!-- Driver Login -->
-    <form id="driverForm" name="driverForm" class="form-card">
-      <h2>Driver Log In</h2>
-      <input type="text" id="driverName" name="Name" placeholder="Driver Name" required />
-      <input type="text" id="licenseNumber" name="License" placeholder="License Number" required />
-      <input type="text" id="vehicleType" name="Vehicle" placeholder="Vehicle Type" required />
-      <button type="submit">Submit</button>
-    </form>
+      <!-- Driver Login -->
+      <form id="driverForm" name="driverForm" class="form-card">
+        <h2>Driver Log In</h2>
 
-    <!-- Welcome Summary -->
-    <div id="driverSummary" class="summary-box"></div>
+        <!-- Driver Info -->
+        <input type="text" name="Name" placeholder="Driver Name" required />
+        <input
+          type="text"
+          name="License"
+          placeholder="License Number"
+          required
+        />
+        <input
+          type="text"
+          name="VehicleType"
+          placeholder="Vehicle Type (e.g., Sedan, Truck)"
+          required
+        />
+        <input
+          type="text"
+          name="PlateNumber"
+          placeholder="Vehicle Registration Plate"
+          required
+        />
+        <input
+          type="number"
+          name="Odometer"
+          placeholder="Odometer Reading (km)"
+          required
+        />
 
-    <!-- 3-Card Grid -->
-    <div class="info-grid">
-      <div>
-        <h3>Current Speed</h3>
-        <p id="speed">0 km/h</p>
-      </div>
-      <div>
-        <h3>Location</h3>
-        <p id="location">Detecting...</p>
-        <a id="mapLink" href="#" target="_blank">View on Google Maps</a>
-      </div>
-      <div>
-        <h3>Weather</h3>
-        <p id="weather">--</p>
-        <p id="temperature">--</p>
-      </div>
-    </div>
+        <!-- Vehicle Specs -->
+        <select name="FuelType" required>
+          <option value="">Select Fuel Type</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Electric">Electric</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
 
-    <!-- Diagnostic -->
-    <div class="diagnostics">
-      <button id="runDiagnostic">🔍 Full Run Car Diagnostic</button>
-      <!-- Logs -->
-        <div class="log-box">
-        <h2>📄 Incident Log</h2>
-        <ul id="logList"></ul>
+        <label>Date of Last Service:</label>
+        <input type="date" name="LastService" required />
+
+        <label>Insurance Expiry Date:</label>
+        <input type="date" name="InsuranceExpiry" required />
+
+        <!-- Emergency Contact -->
+        <input
+          type="text"
+          name="EmergencyName"
+          placeholder="Emergency Contact Name"
+          required
+        />
+        <input
+          type="tel"
+          name="EmergencyPhone"
+          placeholder="Emergency Contact Phone"
+          required
+        />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Welcome Summary -->
+      <div id="driverSummary" class="summary-box"></div>
+
+      <!-- 3-Card Grid -->
+      <div class="info-grid">
+        <div>
+          <h3>Current Speed</h3>
+          <p id="speed">0 km/h</p>
         </div>
+        <div>
+          <h3>Location</h3>
+          <p id="location">Detecting...</p>
+          <a id="mapLink" href="#" target="_blank">View on Google Maps</a>
+        </div>
+        <div>
+          <h3>Weather</h3>
+          <p id="weather">--</p>
+          <p id="temperature">--</p>
+        </div>
+      </div>
+
+      <!-- Diagnostic -->
+      <div class="diagnostics">
+        <button id="runDiagnostic">🔍 Full Run Car Diagnostic</button>
+        <!-- Logs -->
+        <div class="log-box">
+          <h2>📄 Incident Log</h2>
+          <ul id="logList"></ul>
+        </div>
+      </div>
+
+      <!-- Vehicle Monitor -->
+      <div class="feature-section">
+        <h2>Vehicle Monitors</h2>
+        <ul>
+          <li>⛽ Fuel Level: <span id="fuelLevel">Calculating...</span></li>
+          <li>Engine Temperature: <span id="engineTemp">Normal</span></li>
+          <li>
+            Real-time Collision Detection:
+            <span id="collisionDetection">Monitoring...</span>
+          </li>
+          <li>Brake System Check: <span id="brakeSystemCheck">Normal</span></li>
+          <li>🔧 Tire Pressure: <span id="tirePressure">Normal</span></li>
+          <li>🔋 Battery Level: <span id="batteryLevel">Good</span></li>
+          <li>🚀 Speed: <span id="speedLevel">0 km/h</span></li>
+          <li>📍 Location: <span id="locationMonitor">Fetching...</span></li>
+          <li>
+            <a id="mapLinkMonitor" href="#" target="_blank"
+              >View on Google Maps</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- AI Tips -->
+      <div class="ai-box">
+        <h2>🧠 AI Driving Tip</h2>
+        <p id="aiTips">Stay focused.</p>
+      </div>
+
+      <!-- Alerts -->
+      <div id="alerts" class="alerts-box"></div>
+
+      <!-- Beep Sound -->
+      <audio id="beepAudio" preload="auto">
+        <source src="assets/beep.mp3" type="audio/mpeg" />
+      </audio>
     </div>
 
-    <!-- Vehicle Monitor -->
-    <div class="feature-section">
-      <h2>Vehicle Monitors</h2>
-      <ul>
-        <li>🔧 Tire Pressure: <span id="tirePressure">Normal</span></li>
-        <li>🔋 Battery Level: <span id="batteryLevel">Good</span></li>
-        <li>🚀 Speed: <span id="speedLevel">0 km/h</span></li>
-        <li>📍 Location: <span id="locationMonitor">Fetching...</span></li>
-        <li><a id="mapLinkMonitor" href="#" target="_blank">View on Google Maps</a></li>
-      </ul>
-    </div>
-
-    <!-- AI Tips -->
-    <div class="ai-box">
-      <h2>🧠 AI Driving Tip</h2>
-      <p id="aiTips">Stay focused.</p>
-    </div>
-
-    <!-- Alerts -->
-    <div id="alerts" class="alerts-box"></div>
-
-    
-
-    <!-- Beep Sound -->
-    <audio id="beepAudio" preload="auto">
-      <source src="assets/beep.mp3" type="audio/mpeg" />
-    </audio>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
